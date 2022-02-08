@@ -636,3 +636,13 @@ variable "recreate_missing_package" {
   type        = bool
   default     = true
 }
+
+###########################
+# Add a bucket as a trigger
+###########################
+
+variable "bucket_name" {
+  description = "The name of the bucket that is a trigger"
+  type        = string
+  default     = ""
+}

@@ -267,3 +267,14 @@ resource "aws_lambda_event_source_mapping" "this" {
     }
   }
 }
+
+resource "aws_s3_bucket_notification" "bucket_notification" {
+  count = var.bucket_name != null ? 1 : 0
+
+  bucket = var.bucket_name
+
+  lambda_function {
+    lambda_function_arn = aws_lambda_function.this[0].arn
+    events              = ["s3:ObjectCreated:*"]
+  }
+}
